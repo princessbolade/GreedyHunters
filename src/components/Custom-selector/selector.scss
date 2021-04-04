@@ -8,10 +8,10 @@ select {
   border: 0 !important;
   background: transparent;
   background-image: none;
-}
 
-select::-ms-expand {
-  display: none;
+  &::-ms-expand {
+    display: none;
+  }
 }
 
 .select {
@@ -28,6 +28,7 @@ select::-ms-expand {
   border-radius: 0.25em;
   margin-left: 20px;
 }
+
 select {
   flex: 1;
   padding: 0 0.5em;

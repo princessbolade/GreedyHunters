@@ -1,11 +1,12 @@
 import React from "react";
-import "./start-game.css";
+import "./start-game.scss";
 import Character from "../../assets/character.svg";
-import CustomButton from "../Custom-button/custom-button";
-import Selectors from "../Custom-selector/selector";
+import Selectors from "../../components/Custom-selector/selector";
 import Group1 from "../../assets/group.svg";
+import { useHistory } from "react-router-dom";
 
-const StartGame = ({ gameState = "default" }) => {
+const StartGame = ({ gameState = "default", grid, setGrid }) => {
+  const history = useHistory();
   const TobeDisplayed = () => {
     switch (gameState) {
       case "GAMEOVER":
@@ -33,16 +34,22 @@ const StartGame = ({ gameState = "default" }) => {
         );
     }
   };
-
+  const handleRouting = () => {
+    history.push("/game");
+  };
   return (
     <div className="container">
-      <img src={Group1} Name="img" alt="#" />
+      <img src={Group1} className="img" alt="#" />
       <div>
         <img src={Character} alt="" />
 
         <TobeDisplayed />
-        <Selectors />
-        <CustomButton gameState={gameState} />
+        <Selectors setGrid={setGrid} grid={grid} />
+        <div className="animate__animated animate__slideInLeft">
+          <button onClick={handleRouting} className="button" to="/game">
+            {gameState === "default" ? "Start Game" : "Start Again"}
+          </button>
+        </div>
       </div>
       <img src={Group1} className="img" alt="#" />
     </div>

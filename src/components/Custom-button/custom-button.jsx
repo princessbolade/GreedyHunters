@@ -1,5 +1,5 @@
 import React from "react";
-import "./custom-button.css";
+import "./custom-button.scss";
 
 const CustomButton = ({ gameState }) => (
   <div className="animate__animated animate__slideInLeft">
